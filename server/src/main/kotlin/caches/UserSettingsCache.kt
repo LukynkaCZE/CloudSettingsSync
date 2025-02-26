@@ -1,11 +1,10 @@
 package cz.lukynka.cloudsettingssync.server.caches
 
-import cz.lukynka.cloudsettingssync.common.Settings
+import cz.lukynka.cloudsettingssync.common.User
 import io.github.dockyard.cz.lukynka.hollow.HollowCache
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.util.*
 
 object UserSettingsCache : HollowCache<User>("users") {
 
@@ -18,10 +17,13 @@ object UserSettingsCache : HollowCache<User>("users") {
     override fun deserialize(string: String): User {
         return JSON.decodeFromString<User>(string)
     }
+
+    fun getByUsernameOrNull(username: String): User? {
+        return getAll().values.firstOrNull { user -> user.username == username }
+    }
+
+    fun getByUsername(username: String): User {
+        return getByUsernameOrNull(username) ?: throw IllegalArgumentException("Value with key $username was not found in the cache!")
+    }
 }
 
-data class User(
-    val uuid: UUID,
-    val passwordHash: String,
-    val settings: Settings
-)

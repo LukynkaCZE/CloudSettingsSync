@@ -3,7 +3,7 @@ plugins {
     kotlin("plugin.serialization") version "2.0.10"
 }
 
-group = "cz.lukynka.cloudsettingssync"
+group = "cz.lukynka.cloudsettingssync.common"
 version = parent!!.version
 
 repositories {

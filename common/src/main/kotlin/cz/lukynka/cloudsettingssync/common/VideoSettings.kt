@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 data class VideoSettings(
     val renderDistance: Int,
     val simulationDistance: Int,
-    val brightness: Int,
+    val brightness: Double,
     val GUIScale: Int,
     val fullscreen: Boolean,
     val vsync: Boolean,
@@ -14,14 +14,19 @@ data class VideoSettings(
     val viewBobbing: Boolean,
     val attackIndicator: AttackIndicator,
     val autosaveIndicator: Boolean,
-    val clouds: Boolean,
-    val vignette: Boolean,
-    val distortionEffects: Int,
-    val fovEffects: Int,
+    val clouds: CloudStatus,
+    val distortionEffects: Double,
+    val fovEffects: Double,
 ) {
     enum class AttackIndicator {
         CROSSHAIR,
         HOTBAR,
         OFF
+    }
+
+    enum class CloudStatus {
+        OFF,
+        FAST,
+        FANCY
     }
 }

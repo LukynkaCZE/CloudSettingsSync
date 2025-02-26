@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "cz.lukynka.cloudsettingssync.fabric.client.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "OptionsMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "TitleScreenMixin"
+  ]
+}
